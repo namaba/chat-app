@@ -1,7 +1,29 @@
-h1 Chat room
-#messages[data-room_id="#{@room.id}"]
-  = render @messages
+scss:
+  .message-container {
+    height: calc(100vh - 320px);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .message-wrapper {
+    flex: 1 0 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 1rem;
+  }
 
-= label_tag :content, 'Say something:'
-= text_field_tag :content, nil, data: { behavior: 'room_speaker' }
-
+.container.my-5[style="max-width: 640px;"]
+  .card
+    .card-header= @message_users
+    .card-body
+      .message-container
+        .message-wrapper
+          #messages[data-room_id="#{@room.id}"]
+            - @messages.each do |message|
+              - if message.user == current_user
+                = render 'messages/message', message: message
+              - else
+                = render 'messages/other_message', message: message
+            / = render @messages
+    .card-footer
+      = text_area_tag :content, nil, data: { behavior: 'room_speaker' }, class: 'w-100'

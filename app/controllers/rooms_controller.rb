@@ -1,14 +1,15 @@
 class RoomsController < ApplicationController
+  before_action :set_room, only: %i[show]
   before_action :set_user, only: %i[create]
   before_action :has_room?, only: %i[create]
 
   def index
-    @rooms = Room.all.order(:id)
+    @rooms = current_user.rooms.order(:id)
   end
 
   def show
-    @room = Room.find(params[:id])
     @messages = @room.messages
+    @message_users = @room.users.where.not(id: current_user.id).pluck(:username).join(' ')
   end
 
   def create
@@ -21,6 +22,11 @@ class RoomsController < ApplicationController
   end
 
   private
+
+  def set_room
+    @room = current_user.rooms.find_by(id: params[:id])
+    redirect_to root_path, alert: '有効なチャットルームではありません' if @room.nil?
+  end
 
   def set_user
     @user = User.find params[:user_id]

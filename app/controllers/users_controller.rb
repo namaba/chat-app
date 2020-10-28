@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order(:id)
+    @users = User.where.not(id: current_user).order(:id)
   end
 end
