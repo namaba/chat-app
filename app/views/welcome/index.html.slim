@@ -1,2 +1,5 @@
-.container
-  h1 Hello
+.container.my-5[style="max-width: 640px;"]
+  .card
+    h5.card-header.text-center Chat App
+    .card-body.text-center
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-dark'
