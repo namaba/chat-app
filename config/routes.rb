@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root 'rooms#index'
 
   # resourcesを使うとRESTfulなURLを自動生成できる
-  resources :rooms, only: %i[show]
+  resources :rooms, only: %i[show create]
+  resources :users, only: %i[index]
 end
