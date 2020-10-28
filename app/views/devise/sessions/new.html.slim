@@ -1,0 +1,19 @@
+.container.my-5[style="max-width: 640px;"]
+  .card
+    .card-body
+      h5.text-center ログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group
+          = f.label :email, class: 'bmd-label-floating'
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+        .form-group
+          = f.label :password, class: 'bmd-label-floating'
+          = f.password_field :password, autocomplete: "new-password", class: "form-control"
+        .text-center
+          - if devise_mapping.rememberable?
+            .form-group
+              .checkbox
+                label
+                  | ログインを記録する
+                  = f.check_box :remember_me, :as => :boolean, checked: false, label: false, inline_label: true
+          = f.submit "ログイン", class: "btn btn-success btn-raised"

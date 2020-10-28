@@ -1,2 +1,6 @@
-.container
-  h1 Hello
+.container.my-5[style="max-width: 640px;"]
+  .card
+    h5.card-header.text-center Chat App
+    .card-body.text-center
+      = link_to '新規登録', new_user_registration_path, class: 'btn btn-raised btn-success mx-2'
+      = link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-success mx-2'
