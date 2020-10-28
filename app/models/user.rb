@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :messages
+  has_many :users_rooms
+  has_many :rooms, through: :users_rooms
 end

@@ -1,0 +1,11 @@
+.container.my-5[style="max-width: 640px;"]
+  .card
+    h5.card-header.text-center Users
+    ul.list-group.list-group-flush
+      - @users.each do |user|
+        li.list-group-item.border-bottom
+          = link_to rooms_path(user_id: user.id), method: :post, class: 'w-100'
+            .media.m-0
+              .mx-5= image_tag 'someone', :size => '100'
+              .media-body.pt-3
+                p= user.username
