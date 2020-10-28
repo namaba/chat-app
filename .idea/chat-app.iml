@@ -1001,6 +1001,19 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="seed-fu (vbundled(2.3.9)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/seed-fu-2.3.9/lib" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/seed-fu-2.3.9/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="slim (vbundled(4.1.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />

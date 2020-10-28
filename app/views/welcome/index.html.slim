@@ -2,4 +2,6 @@
   .card
     h5.card-header.text-center Chat App
     .card-body.text-center
+      - @users.each do |user|
+        div= user.username
       = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-dark'
