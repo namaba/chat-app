@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # resourcesを使うとRESTfulなURLを自動生成できる
   resources :rooms, only: %i[show create]
   resources :users, only: %i[index]
+  resources :messages, only: %i[destroy]
 end

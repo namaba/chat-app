@@ -22,4 +22,6 @@ scss:
     .message-body
       p= message.content
     .message-footer
-      small= l message.created_at, format: :short_date
+      small= '既読' if  message.is_read
+      small.ml-2= l message.created_at, format: :short_date
+      small.mx-3= link_to '削除', message_path(message), method: :delete, data: { confirm: '本当に削除しますか？' }

@@ -8,7 +8,9 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @messages = @room.messages
+    @room.messages.where.not(user_id: current_user).update(is_read: true)
+    deleted_messages = @room.messages.where(user_id: current_user, is_deleted: true)
+    @messages = @room.messages.where.not(id: deleted_messages)
     @message_users = @room.users.where.not(id: current_user.id).pluck(:username).join(' ')
   end
 
